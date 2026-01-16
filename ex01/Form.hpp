@@ -14,10 +14,20 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
+    class GradeTooHighException: public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+    class GradeTooLowException: public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
     private:
         const std::string _name;
         bool _signed;
@@ -25,12 +35,14 @@ class Form
         const int exec_grade;
     public:
         Form();
+        Form(const Form& copy);
+        Form& operator=(const Form& copy);
         Form(const std::string& name, int grade, int exec_grade);
         ~Form();
-        const std::string getName();
-        bool getSigned();
-        const int getSignGrade();
-        const int getExecGrade();
+        const std::string getName() const;
+        bool getSigned() const;
+        int getSignGrade() const;
+        int getExecGrade() const;
         void beSigned(Bureaucrat& employee);
 };
 

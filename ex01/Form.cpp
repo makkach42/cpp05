@@ -11,24 +11,36 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form():_name("default"), _signed(false), sign_grade(150), exec_grade(150){}
+
+Form::Form(const Form& copy):_name(copy.getName()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade())
+{
+    *this = copy;
+}
+
+Form& Form::operator=(const Form& copy)
+{
+    if (this != &copy)
+    {
+        this->_signed = copy.getSigned();
+    }
+    return (*this);
+}
 
 Form::Form(const std::string& name, int sign_grade, int exec_grade):_name(name), _signed(false), sign_grade(sign_grade), exec_grade(exec_grade)
 {
     try
     {
         if (this->sign_grade < 1 || this->exec_grade < 1)
-            throw 1;
+            throw GradeTooHighException();
         if (this->sign_grade > 150 || this->exec_grade > 150)
-            throw 2;
+            throw GradeTooLowException();
     }
-    catch(int i)
+    catch(std::exception& e)
     {
-        if (i == 1)
-            std::cerr << "Form::GradeTooHighException" << std::endl;            
-        if (i == 2)
-            std::cerr << "Form::GradeTooLowException" << std::endl;            
+        std::cerr << e.what() << std::endl;
     }
 }
 
@@ -40,10 +52,10 @@ std::ostream &operator<<(std::ostream &os, Form &form)
     return (os);
 }
 
-const std::string Form::getName(){return this->_name;}
-bool Form::getSigned(){return this->_signed;}
-const int Form::getSignGrade(){return this->sign_grade;}
-const int Form::getExecGrade(){return this->exec_grade;}
+const std::string Form::getName()const{return this->_name;}
+bool Form::getSigned()const{return this->_signed;}
+int Form::getSignGrade()const{return this->sign_grade;}
+int Form::getExecGrade()const{return this->exec_grade;}
 
 void Form::beSigned(Bureaucrat& employee)
 {
@@ -53,8 +65,12 @@ void Form::beSigned(Bureaucrat& employee)
             throw 1;
         this->_signed = true;
     }
-    catch(int i)
+    catch(std::exception& e)
     {
-        std::cerr << "Form::GradeTooLowException" << std::endl;
+        std::cerr << e.what() << std::endl;
     }
 }
+
+const char *Form::GradeTooHighException::what() const throw(){ return "Form::GradeTooHighException"; }
+
+const char *Form::GradeTooLowException::what() const throw(){ return "Form::GradeToolowException"; }

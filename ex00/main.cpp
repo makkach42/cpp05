@@ -14,7 +14,7 @@
 
 int main()
 {
-    Bureaucrat b("qwerty", 0);
+    Bureaucrat b("qwerty", 1);
     std::cout << b << std::endl;
     return 0;
 }

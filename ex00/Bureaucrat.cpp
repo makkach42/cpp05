@@ -14,22 +14,34 @@
 
 Bureaucrat::Bureaucrat():name("default"), Grade(150){}
 
+Bureaucrat::Bureaucrat(const Bureaucrat& copy)
+{
+    *this = copy;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
+{
+    if (this != &copy)
+    {
+        this->Grade = copy.getGrade();
+    }
+    return (*this);
+}
+
+
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(150)
 {
     try
     {
         if (grade > 150)
-            throw 1;
+            throw GradeTooLowException();
         else if (grade < 1)
-            throw 2;
+            throw GradeTooHighException();
         this->Grade = grade;
     }
-    catch(int i)
+    catch(std::exception& e)
     {
-        if (i == 1)
-            std::cerr << "Bureaucrat::GradeTooLowException" << std::endl;
-        else if (i == 2)
-            std::cerr << "Bureaucrat::GradeTooLowException" << std::endl;
+        std::cerr << e.what() << std::endl;
     }
 }
 
@@ -44,3 +56,7 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat& b)
 const std::string Bureaucrat::getName()const{ return this->name; }
 
 int Bureaucrat::getGrade()const{ return this->Grade; }
+
+const char *Bureaucrat::GradeTooHighException::what() const throw() {return ("GradeTooHighException");}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("GradeTooLowException");}
