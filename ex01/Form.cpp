@@ -46,9 +46,9 @@ Form::Form(const std::string& name, int sign_grade, int exec_grade):_name(name),
 
 Form::~Form(){}
 
-std::ostream &operator<<(std::ostream &os, Form &form)
+std::ostream &operator<<(std::ostream &os, Form &Form)
 {
-    os << form.getName() << ", form sign grade " << form.getSignGrade() << ", form sign status " << form.getSigned() << ", form execution grade " << form.getExecGrade();
+    os << Form.getName() << ", Form sign grade " << Form.getSignGrade() << ", Form sign status " << Form.getSigned() << ", Form execution grade " << Form.getExecGrade();
     return (os);
 }
 

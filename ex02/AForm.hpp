@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@
 #include <iostream>
 class Bureaucrat;
 
-class Form
+class AForm
 {
     class GradeTooHighException: public std::exception
     {
@@ -34,18 +34,20 @@ class Form
         const int sign_grade;
         const int exec_grade;
     public:
-        Form();
-        Form(const Form& copy);
-        Form& operator=(const Form& copy);
-        Form(const std::string& name, int grade, int exec_grade);
-        ~Form();
+        AForm();
+        AForm(const AForm& copy);
+        AForm& operator=(const AForm& copy);
+        AForm(const std::string& name, int grade, int exec_grade);
+        ~AForm();
         const std::string getName() const;
         bool getSigned() const;
         int getSignGrade() const;
         int getExecGrade() const;
-        void beSigned(Bureaucrat& employee);
+        virtual void beSigned(Bureaucrat& employee) = 0;
+        virtual void execute(Bureaucrat const & executor) const;
+        void setSigned(bool expression);
 };
 
-std::ostream &operator<<(std::ostream &stream, Form &AForm);
+std::ostream &operator<<(std::ostream &stream, AForm &AForm);
 
 #endif
