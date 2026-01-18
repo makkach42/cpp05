@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:02:48 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/14 14:10:53 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/18 10:57:52 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,39 @@ Form::Form():_name("default"), _signed(false), sign_grade(150), exec_grade(150){
 
 Form::Form(const Form& copy):_name(copy.getName()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade())
 {
-    *this = copy;
+	*this = copy;
 }
 
 Form& Form::operator=(const Form& copy)
 {
-    if (this != &copy)
-    {
-        this->_signed = copy.getSigned();
-    }
-    return (*this);
+	if (this != &copy)
+	{
+		this->_signed = copy.getSigned();
+	}
+	return (*this);
 }
 
 Form::Form(const std::string& name, int sign_grade, int exec_grade):_name(name), _signed(false), sign_grade(sign_grade), exec_grade(exec_grade)
 {
-    try
-    {
-        if (this->sign_grade < 1 || this->exec_grade < 1)
-            throw GradeTooHighException();
-        if (this->sign_grade > 150 || this->exec_grade > 150)
-            throw GradeTooLowException();
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	try
+	{
+		if (this->sign_grade < 1 || this->exec_grade < 1)
+			throw GradeTooHighException();
+		if (this->sign_grade > 150 || this->exec_grade > 150)
+			throw GradeTooLowException();
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 Form::~Form(){}
 
 std::ostream &operator<<(std::ostream &os, Form &Form)
 {
-    os << Form.getName() << ", Form sign grade " << Form.getSignGrade() << ", Form sign status " << Form.getSigned() << ", Form execution grade " << Form.getExecGrade();
-    return (os);
+	os << Form.getName() << ", Form sign grade " << Form.getSignGrade() << ", Form sign status " << Form.getSigned() << ", Form execution grade " << Form.getExecGrade();
+	return (os);
 }
 
 const std::string Form::getName()const{return this->_name;}
@@ -59,16 +59,16 @@ int Form::getExecGrade()const{return this->exec_grade;}
 
 void Form::beSigned(Bureaucrat& employee)
 {
-    try
-    {
-        if (employee.getGrade() > this->sign_grade)
-            throw 1;
-        this->_signed = true;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	try
+	{
+		if (employee.getGrade() > this->sign_grade)
+			throw 1;
+		this->_signed = true;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 const char *Form::GradeTooHighException::what() const throw(){ return "Form::GradeTooHighException"; }

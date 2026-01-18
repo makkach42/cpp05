@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/14 13:00:07 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/18 10:58:00 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int main()
 {
-    Bureaucrat b("qwerty", 2);
-    std::cout << b << std::endl;
-    Form f("verssey treaty", 1, 1);
-    b.signForm(f);
-    return 0;
+	Bureaucrat b("qwerty", 2);
+	std::cout << b << std::endl;
+	Form f("verssey treaty", 1, 1);
+	b.signForm(f);
+	return 0;
 }
