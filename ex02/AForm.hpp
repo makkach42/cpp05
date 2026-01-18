@@ -18,34 +18,37 @@ class Bureaucrat;
 
 class AForm
 {
-    class GradeTooHighException: public std::exception
-    {
-        public:
-            const char *what() const throw();
-    };
-    class GradeTooLowException: public std::exception
-    {
-        public:
-            const char *what() const throw();
-    };
-    private:
-        const std::string _name;
-        bool _signed;
-        const int sign_grade;
-        const int exec_grade;
-    public:
-        AForm();
-        AForm(const AForm& copy);
-        AForm& operator=(const AForm& copy);
-        AForm(const std::string& name, int grade, int exec_grade);
-        ~AForm();
-        const std::string getName() const;
-        bool getSigned() const;
-        int getSignGrade() const;
-        int getExecGrade() const;
-        virtual void beSigned(Bureaucrat& employee) = 0;
-        virtual void execute(Bureaucrat const & executor) const;
-        void setSigned(bool expression);
+	class GradeTooHighException: public std::exception
+	{
+		public:
+			const char *what() const throw();
+	};
+	class GradeTooLowException: public std::exception
+	{
+		public:
+			const char *what() const throw();
+	};
+	private:
+		const std::string _name;
+		bool _signed;
+		const int sign_grade;
+		const int exec_grade;
+		std::string target;
+	public:
+		AForm();
+		AForm(const AForm& copy);
+		AForm& operator=(const AForm& copy);
+		AForm(const std::string& name, int grade, int exec_grade, std::string target);
+		~AForm();
+		const std::string getName() const;
+		bool getSigned() const;
+		int getSignGrade() const;
+		int getExecGrade() const;
+		std::string getTarget() const;
+		virtual void beSigned(Bureaucrat& employee) = 0;
+		virtual void execute(Bureaucrat const & executor) const;
+		void setSigned(bool expression);
+		void setTarget(std::string target);
 };
 
 std::ostream &operator<<(std::ostream &stream, AForm &AForm);
