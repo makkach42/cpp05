@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:10 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 11:56:30 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/19 13:30:14 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(){}
+ShrubberyCreationForm::ShrubberyCreationForm():AForm("default", 145, 137, "target"){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target):AForm(name, sign_grade, execute_grade, target)
 {

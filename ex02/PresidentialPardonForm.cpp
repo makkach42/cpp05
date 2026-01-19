@@ -6,22 +6,22 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:28:57 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:58:44 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/19 13:29:23 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm():AForm(){}
+PresidentialPardonForm::PresidentialPardonForm():AForm("default", 25, 5, "target"){}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy):AForm(copy){}
 
-// PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
-// {
-//     (void)copy;
-//     return *this;
-// }
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
+{
+    (void)copy;
+    return *this;
+}
 
 const char *PresidentialPardonForm::GradeTooHighException::what() const throw(){return "PresidentialPardonForm::GradeTooHighException";}
 
