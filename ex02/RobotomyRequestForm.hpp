@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:08 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/19 13:32:55 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/20 10:54:04 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include <cstdlib>
+// #include <ctime>
 
 class RobotomyRequestForm : public AForm
 {
