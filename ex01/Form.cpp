@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:02:48 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:57:52 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 09:50:23 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ Form::Form(const Form& copy):_name(copy.getName()), sign_grade(copy.getSignGrade
 Form& Form::operator=(const Form& copy)
 {
 	if (this != &copy)
-	{
 		this->_signed = copy.getSigned();
-	}
 	return (*this);
 }
 

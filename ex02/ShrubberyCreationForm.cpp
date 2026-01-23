@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:10 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/19 13:30:14 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 09:53:40 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, i
 	}
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){(void)copy;}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){*this = copy;}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy){(void)copy;return *this;}
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy){AForm::operator=(copy);return *this;}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
-const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){ return "AForm::GradeTooHighException"; }
+const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){ return "ShrubberyCreationForm::GradeTooHighException"; }
 
-const char *ShrubberyCreationForm::GradeTooLowException::what() const throw(){ return "AForm::GradeToolowException"; }
+const char *ShrubberyCreationForm::GradeTooLowException::what() const throw(){ return "ShrubberyCreationForm::GradeToolowException"; }
 
-const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "AForm::GradeToolowException"; }
+const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "ShrubberyCreationForm::GradeToolowException"; }
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 {

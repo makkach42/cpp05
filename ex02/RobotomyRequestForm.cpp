@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:05 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/20 11:03:31 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 09:52:22 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int grade, int
     }
     
 }
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){(void)copy;return *this;}
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
 const char *RobotomyRequestForm::GradeTooHighException::what() const throw(){return "RobotomyRequestForm::GradeTooHighException";}

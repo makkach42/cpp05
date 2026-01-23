@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:57:43 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 09:55:47 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& copy)
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 {
 	if (this != &copy)
-	{
 		this->Grade = copy.getGrade();
-	}
 	return (*this);
 }
 
@@ -57,9 +55,9 @@ const std::string Bureaucrat::getName()const{ return this->name; }
 
 int Bureaucrat::getGrade()const{ return this->Grade; }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw() {return ("GradeTooHighException");}
+const char *Bureaucrat::GradeTooHighException::what() const throw() {return ("Bureaucrat::GradeTooHighException");}
 
-const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("GradeTooLowException");}
+const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Bureaucrat::GradeTooLowException");}
 
 void Bureaucrat::signForm(Form& f)
 {
