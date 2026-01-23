@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:09 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:57:33 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:04:54 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class Bureaucrat
 		~Bureaucrat();
 		const std::string getName() const;
 		int getGrade() const;
+		void increment();
+		void decrement();
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& b);

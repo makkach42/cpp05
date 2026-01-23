@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:05 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:52:22 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:58:34 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int grade, int
     try
     {
         if (grade > 72 || exec_grade > 45)
-            throw (GradeTooLowException());
+            throw AForm::GradeTooLowException();
     }
     catch(const std::exception& e)
     {
@@ -31,11 +31,6 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int grade, int
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
-const char *RobotomyRequestForm::GradeTooHighException::what() const throw(){return "RobotomyRequestForm::GradeTooHighException";}
-
-const char *RobotomyRequestForm::GradeTooLowException::what() const throw(){return "RobotomyRequestForm::GradeTooLowException";}
-
-
 void RobotomyRequestForm::beSigned(Bureaucrat& employee)
 {
 	try
@@ -43,7 +38,7 @@ void RobotomyRequestForm::beSigned(Bureaucrat& employee)
 		if (this->getSignGrade() <= 72 && this->getSignGrade() >= employee.getGrade())
 			this->setSigned(true);
 		else
-			throw GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	}
 	catch(const std::exception& e)
 	{
@@ -55,6 +50,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
+		if (this->getSigned() == false)
+			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 45 && this->getSignGrade() <= 72) && executor.getGrade() <= 45 && executor.getGrade() <= this->getExecGrade())
 		{
             srand(time(NULL));
@@ -70,7 +67,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
             }
 		}
 		else
-			throw GradeTooHighException();
+			throw AForm::GradeTooHighException();
 	}
 	catch(const std::exception& e)
 	{

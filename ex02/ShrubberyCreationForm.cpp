@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:10 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:53:40 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:59:39 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, i
 	try
 	{
 		if (sign_grade > 145 || execute_grade > 137)
-			throw GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	}
 	catch(const std::exception& e)
 	{
@@ -35,10 +35,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
-const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){ return "ShrubberyCreationForm::GradeTooHighException"; }
-
-const char *ShrubberyCreationForm::GradeTooLowException::what() const throw(){ return "ShrubberyCreationForm::GradeToolowException"; }
-
 const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "ShrubberyCreationForm::GradeToolowException"; }
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
@@ -48,7 +44,7 @@ void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 		if (this->getSignGrade() <= 145 && this->getSignGrade() >= employee.getGrade())
 			this->setSigned(true);
 		else
-			throw GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	}
 	catch(const std::exception& e)
 	{
@@ -60,6 +56,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
+		if (this->getSigned() == false)
+			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 137 && this->getSignGrade() <= 145) && executor.getGrade() <= 137 && executor.getGrade() <= this->getExecGrade())
 		{
 			std::ofstream of;
@@ -89,7 +87,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 			of.close();
 		}
 		else
-			throw GradeTooHighException();
+			throw AForm::GradeTooHighException();
 	}
 	catch(const std::exception& e)
 	{

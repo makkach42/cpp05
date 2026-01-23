@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:28:57 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:57:06 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:01:02 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm():AForm("default", 25, 5, "target
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy):AForm(copy){}
 
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
-{
-    (void)copy;
-    return *this;
-}
-
-const char *PresidentialPardonForm::GradeTooHighException::what() const throw(){return "PresidentialPardonForm::GradeTooHighException";}
-
-const char *PresidentialPardonForm::GradeTooLowException::what() const throw(){return "PresidentialPardonForm::GradeTooLowException";}
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy){AForm::operator=(copy);return *this;}
 
 AForm *PresidentialPardonForm::createPardon(){ return new PresidentialPardonForm();}
 
@@ -46,8 +38,10 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	try
 	{
+		if (this->getSigned() == false)
+			throw AForm::NotSignedForm();
 		if (executor.getGrade() > 5 || executor.getGrade() > this->getSignGrade())
-			throw GradeTooLowException();
+			throw AForm::GradeTooLowException();
 		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 	}
 	catch(std::exception& e)
@@ -63,7 +57,7 @@ void PresidentialPardonForm::beSigned(Bureaucrat& employee)
 		if (employee.getGrade() <= 25 && employee.getGrade() <= this->getSignGrade())
 			this->setSigned(true);
 		else
-			throw GradeTooLowException();
+			throw AForm::GradeTooLowException();
 	}
 	catch(std::exception& e)
 	{

@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 11:08:33 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/20 12:45:38 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:17:03 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ AForm *Intern::makeForm(std::string one, std::string two)
 		std::string arr[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
 		typedef AForm *(*clone)();
 		clone arr2[3];
-		arr2[0] = &PresidentialPardonForm::createPardon;
-		arr2[1] = &ShrubberyCreationForm::createShrubbery;
-		arr2[2] = &RobotomyRequestForm::createRobotomy;
+		arr2[0] = &RobotomyRequestForm::createRobotomy;
+		arr2[1] = &PresidentialPardonForm::createPardon;
+		arr2[2] = &ShrubberyCreationForm::createShrubbery;
 		for (int i = 0; i < 3; i++)
 		{
 			if (arr[i] == one)

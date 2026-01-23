@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:02:48 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:50:23 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:01:21 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void Form::beSigned(Bureaucrat& employee)
 	try
 	{
 		if (employee.getGrade() > this->sign_grade)
-			throw 1;
+			throw GradeTooLowException();
 		this->_signed = true;
 	}
 	catch(std::exception& e)

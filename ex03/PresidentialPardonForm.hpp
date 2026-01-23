@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:02 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/20 12:33:24 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:51:27 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@
 
 class PresidentialPardonForm : public AForm
 {
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			const char *what() const throw();
-	};
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			const char *what() const throw();
-	};
-	private:
-		/* data */
 	public:
 		PresidentialPardonForm();
 		PresidentialPardonForm(const PresidentialPardonForm& copy);

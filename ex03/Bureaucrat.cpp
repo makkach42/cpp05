@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:56:26 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:20:39 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,13 @@ void Bureaucrat::signForm(AForm& f)
 	{
 		f.beSigned(*this);
 		if (f.getSigned() == false)
-			throw (GradeTooHighException());
+			throw (GradeTooLowException());
 		std::cout << this->name << " signed " << f.getName() << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(std::exception& e)
 	{
 		std::cerr << this->name << " couldn´t sign " << f.getName() << " because " <<e.what() << std::endl;
 	}
-	
 }
 
 void Bureaucrat::executeForm(AForm const & form) const
@@ -91,4 +90,37 @@ void Bureaucrat::executeForm(AForm const & form) const
 		std::cerr << this->name << " couldn´t execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 	
+}
+
+void Bureaucrat::increment()
+{
+	try
+	{
+		this->Grade--;
+		if (this->Grade > 150)
+			throw GradeTooLowException();
+		if (this->Grade < 1)
+			throw GradeTooHighException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+}
+
+void Bureaucrat::decrement()
+{
+	try
+	{
+		this->Grade++;
+		if (this->Grade > 150)
+			throw GradeTooLowException();
+		if (this->Grade < 1)
+			throw GradeTooHighException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 09:49:20 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:09:49 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,36 @@ int Bureaucrat::getGrade()const{ return this->Grade; }
 const char *Bureaucrat::GradeTooHighException::what() const throw() {return ("GradeTooHighException");}
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("GradeTooLowException");}
+
+void Bureaucrat::increment()
+{
+	try
+	{
+		this->Grade--;
+		if (this->Grade > 150)
+			throw GradeTooLowException();
+		if (this->Grade < 1)
+			throw GradeTooHighException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+}
+
+void Bureaucrat::decrement()
+{
+	try
+	{
+		this->Grade++;
+		if (this->Grade > 150)
+			throw GradeTooLowException();
+		if (this->Grade < 1)
+			throw GradeTooHighException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}

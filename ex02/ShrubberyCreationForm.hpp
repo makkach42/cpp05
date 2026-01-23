@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 11:06:27 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:52:13 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,11 @@
 
 class ShrubberyCreationForm : public AForm
 {
-	class GradeTooHighException: public std::exception
-	{
-		public:
-			const char *what() const throw();
-	};
-	class GradeTooLowException: public std::exception
-	{
-		public:
-			const char *what() const throw();
-	};
 	class BadFd: public std::exception
 	{
 		public:
 			const char *what() const throw();
 	};
-	private:
-		
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target);

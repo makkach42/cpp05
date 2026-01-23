@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:09 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:58:25 by makkach          ###   ########.fr       */
+/*   Updated: 2026/01/23 10:08:33 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class Bureaucrat
 		int getGrade() const;
 		void signForm(AForm& f);
 		void executeForm(AForm const & form) const;
+		void increment();
+		void decrement();
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& b);
