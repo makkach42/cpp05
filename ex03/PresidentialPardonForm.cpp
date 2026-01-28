@@ -19,7 +19,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& cop
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy){AForm::operator=(copy);return *this;}
 
-AForm *PresidentialPardonForm::createPardon(){ return new PresidentialPardonForm();}
+AForm *PresidentialPardonForm::createPardon(){ return new PresidentialPardonForm("default", 25, 5, "targey");}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& name, int sign_grade, int exec_grade, std::string target):AForm::AForm(name, sign_grade, exec_grade, target)
 {

@@ -37,7 +37,12 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 45 && this->getSignGrade() <= 72) && executor.getGrade() <= 45 && executor.getGrade() <= this->getExecGrade())
 		{
-            srand(time(NULL));
+			static bool random = false;
+			if (!random)
+			{
+				srand(time(NULL));
+				random = true;
+			}
 			std::cout << "* drilling noises *" << std::endl;
             if (rand() % 2)
                 std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;

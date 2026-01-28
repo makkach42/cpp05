@@ -56,18 +56,30 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Bur
 
 void Bureaucrat::signForm(AForm& f)
 {
-		f.beSigned(*this);
-		if (f.getSigned() == false)
-			throw (GradeTooLowException());
-		std::cout << this->name << " signed " << f.getName() << std::endl;
+    try
+    {
+        f.beSigned(*this);
+        std::cout << this->name << " signed " << f.getName() << std::endl;
+    }
+    catch(std::exception& e)
+    {
+        std::cout << this->name << " couldn't sign " << f.getName() 
+                  << " because " << e.what() << std::endl;
+    }
 }
 
 void Bureaucrat::executeForm(AForm const & form) const
 {
-		form.execute(*this);
-		if (this->getGrade() > form.getExecGrade() || this->getGrade() > form.getSignGrade())
-			throw GradeTooLowException();
-		std::cout << this->name << " executed " << form.getName() << std::endl;	
+    try
+    {
+        form.execute(*this);
+        std::cout << this->name << " executed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << this->name << " couldn't execute " << form.getName() 
+                  << " because " << e.what() << std::endl;
+    }
 }
 
 void Bureaucrat::increment()

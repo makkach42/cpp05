@@ -28,7 +28,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
-const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "AForm::GradeToolowException"; }
+const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "AForm::BadFd"; }
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 {
@@ -74,4 +74,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw AForm::GradeTooHighException();
 }
 
-AForm *ShrubberyCreationForm::createShrubbery(){ return new ShrubberyCreationForm();}
+AForm *ShrubberyCreationForm::createShrubbery(){ return new ShrubberyCreationForm("default", 145, 137, "target");}

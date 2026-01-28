@@ -14,13 +14,22 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
 	try
 	{
 		Bureaucrat b("qwerty", 5);
-		ShrubberyCreationForm d("tree", 5, 5, "first_one");
+		RobotomyRequestForm d("tree", 5, 5, "first_one");
+		b.signForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
+		b.executeForm(d);
 		b.executeForm(d);
 	}
 	catch(const std::exception& e)

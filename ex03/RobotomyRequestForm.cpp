@@ -23,7 +23,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int grade, int
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
-AForm *RobotomyRequestForm::createRobotomy(){ return new RobotomyRequestForm();}
+AForm *RobotomyRequestForm::createRobotomy(){ return new RobotomyRequestForm("default", 72, 45, "target");}
 
 void RobotomyRequestForm::beSigned(Bureaucrat& employee)
 {
@@ -39,17 +39,17 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 45 && this->getSignGrade() <= 72) && executor.getGrade() <= 45 && executor.getGrade() <= this->getExecGrade())
 		{
-            srand(time(NULL));
+            static bool random = false;
+            if (!random)
+            {
+                srand(time(NULL));
+                random = true;
+            }
+            std::cout << "* drilling noises *" << std::endl;
             if (rand() % 2)
-            {
-                std::cout << "* drilling noises *" << std::endl;
                 std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
-            }
             else
-            {
-                std::cout << "* drilling noises *" << std::endl;
                 std::cout << "the robotomy failed." << std::endl;
-            }
 		}
 		else
 			throw AForm::GradeTooHighException();

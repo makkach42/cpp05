@@ -59,7 +59,7 @@ void AForm::beSigned(Bureaucrat& employee)
 
 const char *AForm::GradeTooHighException::what() const throw(){ return "AForm::GradeTooHighException"; }
 
-const char *AForm::GradeTooLowException::what() const throw(){ return "AForm::GradeToolowException"; }
+const char *AForm::GradeTooLowException::what() const throw(){ return "AForm::GradeTooLowException"; }
 
 const char *AForm::NotSignedForm::what() const throw(){ return "AForm::NotSignedForm"; }
 

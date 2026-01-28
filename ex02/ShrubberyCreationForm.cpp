@@ -28,7 +28,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
-const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "ShrubberyCreationForm::GradeToolowException"; }
+const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "ShrubberyCreationForm::BadFd"; }
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 {

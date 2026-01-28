@@ -27,7 +27,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string& name, int sign
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-		if (executor.getGrade() > 5 || executor.getGrade() > this->getSignGrade())
+		if (executor.getGrade() > this->getExecGrade())
 			throw AForm::GradeTooLowException();
 		if (this->getSigned() == false)
 			throw AForm::NotSignedForm();

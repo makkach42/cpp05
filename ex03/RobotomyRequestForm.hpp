@@ -15,7 +15,7 @@
 
 #include "AForm.hpp"
 #include <cstdlib>
-// #include <ctime>
+#include <ctime>
 
 class RobotomyRequestForm : public AForm
 {
