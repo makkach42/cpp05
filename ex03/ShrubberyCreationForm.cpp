@@ -18,15 +18,8 @@ ShrubberyCreationForm::ShrubberyCreationForm():AForm("default", 145, 137, "targe
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target):AForm(name, sign_grade, execute_grade, target)
 {
-	try
-	{
-		if (sign_grade > 145 || execute_grade > 137)
-			throw AForm::GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (sign_grade > 145 || execute_grade > 137)
+		throw AForm::GradeTooLowException();
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){*this = copy;}
@@ -39,60 +32,46 @@ const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "AForm::G
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 {
-	try
-	{
-		if (this->getSignGrade() <= 145 && this->getSignGrade() >= employee.getGrade())
-			this->setSigned(true);
-		else
-			throw AForm::GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (this->getSignGrade() <= 145 && this->getSignGrade() >= employee.getGrade())
+		this->setSigned(true);
+	else
+		throw AForm::GradeTooLowException();
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	try
+	if (this->getSigned() == false)
+		throw AForm::NotSignedForm();
+	if ((this->getExecGrade() <= 137 && this->getSignGrade() <= 145) && executor.getGrade() <= 137 && executor.getGrade() <= this->getExecGrade())
 	{
-		if (this->getSigned() == false)
-			throw AForm::NotSignedForm();
-		if ((this->getExecGrade() <= 137 && this->getSignGrade() <= 145) && executor.getGrade() <= 137 && executor.getGrade() <= this->getExecGrade())
+		std::ofstream of;
+		of.open((this->getTarget() + "_shrubbery").c_str());
+		if (!of.is_open())
+			throw BadFd();
+		std::string tree[] = 
 		{
-			std::ofstream of;
-			of.open((this->getTarget() + "_shrubbery").c_str());
-			if (!of.is_open())
-				throw BadFd();
-			std::string tree[] = 
-			{
-				  "     ccee88oo/"
-				, "  C8O8O8Q8PoOb o8oo/"
-				, " dOB69QO8PdUOpugoO9bD/"
-				, "CgggbU8OU qOp qOdoUOdcb/"
-				, "    6OuU  /p u gcoUodpP/"
-				, "      /////  /douUP/"
-				, "        ///p////"
-				, "         |||///"
-				, "         |||/p/"
-				, "         |||||"
-				,"   .....//||||||p...."
-			};
-			for (size_t i = 0; i < 11; i++)
-			{
-				of << tree[i];
-				if (i < 10)
-					of << std::string("\n");
-			}
-			of.close();
+				"     ccee88oo/"
+			, "  C8O8O8Q8PoOb o8oo/"
+			, " dOB69QO8PdUOpugoO9bD/"
+			, "CgggbU8OU qOp qOdoUOdcb/"
+			, "    6OuU  /p u gcoUodpP/"
+			, "      /////  /douUP/"
+			, "        ///p////"
+			, "         |||///"
+			, "         |||/p/"
+			, "         |||||"
+			,"   .....//||||||p...."
+		};
+		for (size_t i = 0; i < 11; i++)
+		{
+			of << tree[i];
+			if (i < 10)
+				of << std::string("\n");
 		}
-		else
-			throw AForm::GradeTooHighException();
+		of.close();
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	else
+		throw AForm::GradeTooHighException();
 }
 
 AForm *ShrubberyCreationForm::createShrubbery(){ return new ShrubberyCreationForm();}

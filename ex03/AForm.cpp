@@ -31,17 +31,10 @@ AForm& AForm::operator=(const AForm& copy)
 
 AForm::AForm(const std::string& name, int sign_grade, int exec_grade, std::string target):_name(name), _signed(false), sign_grade(sign_grade), exec_grade(exec_grade), target(target)
 {
-	try
-	{
 		if (this->sign_grade < 1 || this->exec_grade < 1)
 			throw GradeTooHighException();
 		if (this->sign_grade > 150 || this->exec_grade > 150)
 			throw GradeTooLowException();
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 AForm::~AForm(){}
@@ -59,16 +52,9 @@ int AForm::getExecGrade()const{return this->exec_grade;}
 
 void AForm::beSigned(Bureaucrat& employee)
 {
-	try
-	{
 		if (employee.getGrade() > this->sign_grade)
 			throw GradeTooLowException();
 		this->_signed = true;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 const char *AForm::GradeTooHighException::what() const throw(){ return "AForm::GradeTooHighException"; }

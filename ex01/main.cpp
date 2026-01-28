@@ -15,9 +15,17 @@
 
 int main()
 {
-	Bureaucrat b("qwerty", 2);
-	std::cout << b << std::endl;
-	Form f("verssey treaty", 1, 1);
-	b.signForm(f);
+	try
+	{
+		Bureaucrat b("qwerty", 2);
+		std::cout << b << std::endl;
+		Form f("verssey treaty", 1, 1);
+		b.signForm(f);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	return 0;
 }

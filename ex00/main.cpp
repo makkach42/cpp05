@@ -14,7 +14,15 @@
 
 int main()
 {
-	Bureaucrat b("qwerty", 1);
-	std::cout << b << std::endl;
+	try
+	{
+		Bureaucrat b("qwerty", 1);
+		std::cout << b << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	return 0;
 }

@@ -19,11 +19,18 @@
 
 int main()
 {
-	// Bureaucrat b("qwerty", 5);
-	// ShrubberyCreationForm d("tree", 5, 5, "first_one");
-	// b.executeForm(d);
-	Intern i;
-	AForm *j = i.makeForm("robotomy request", "wwwww");
-	delete j;
+	try
+	{
+		Bureaucrat b("qwerty", 5);
+		ShrubberyCreationForm d("tree", 5, 5, "first_one");
+		b.executeForm(d);
+		Intern i;
+		AForm *j = i.makeForm("robotomy request", "wwwww");
+		delete j;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }

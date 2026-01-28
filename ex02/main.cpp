@@ -17,8 +17,16 @@
 
 int main()
 {
-	Bureaucrat b("qwerty", 5);
-	ShrubberyCreationForm d("tree", 5, 5, "first_one");
-	b.executeForm(d);
+	try
+	{
+		Bureaucrat b("qwerty", 5);
+		ShrubberyCreationForm d("tree", 5, 5, "first_one");
+		b.executeForm(d);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	return 0;
 }

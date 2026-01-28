@@ -18,15 +18,8 @@ ShrubberyCreationForm::ShrubberyCreationForm():AForm("default", 145, 137, "targe
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target):AForm(name, sign_grade, execute_grade, target)
 {
-	try
-	{
 		if (sign_grade > 145 || execute_grade > 137)
 			throw AForm::GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){*this = copy;}
@@ -39,23 +32,14 @@ const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "Shrubber
 
 void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 {
-	try
-	{
 		if (this->getSignGrade() <= 145 && this->getSignGrade() >= employee.getGrade())
 			this->setSigned(true);
 		else
 			throw AForm::GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	try
-	{
 		if (this->getSigned() == false)
 			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 137 && this->getSignGrade() <= 145) && executor.getGrade() <= 137 && executor.getGrade() <= this->getExecGrade())
@@ -88,9 +72,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		}
 		else
 			throw AForm::GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }

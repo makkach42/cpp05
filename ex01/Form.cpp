@@ -29,17 +29,10 @@ Form& Form::operator=(const Form& copy)
 
 Form::Form(const std::string& name, int sign_grade, int exec_grade):_name(name), _signed(false), sign_grade(sign_grade), exec_grade(exec_grade)
 {
-	try
-	{
-		if (this->sign_grade < 1 || this->exec_grade < 1)
-			throw GradeTooHighException();
-		if (this->sign_grade > 150 || this->exec_grade > 150)
-			throw GradeTooLowException();
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (this->sign_grade < 1 || this->exec_grade < 1)
+		throw GradeTooHighException();
+	if (this->sign_grade > 150 || this->exec_grade > 150)
+		throw GradeTooLowException();
 }
 
 Form::~Form(){}
@@ -57,16 +50,9 @@ int Form::getExecGrade()const{return this->exec_grade;}
 
 void Form::beSigned(Bureaucrat& employee)
 {
-	try
-	{
-		if (employee.getGrade() > this->sign_grade)
-			throw GradeTooLowException();
-		this->_signed = true;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (employee.getGrade() > this->sign_grade)
+		throw GradeTooLowException();
+	this->_signed = true;
 }
 
 const char *Form::GradeTooHighException::what() const throw(){ return "Form::GradeTooHighException"; }

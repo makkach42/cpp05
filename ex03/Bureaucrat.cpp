@@ -31,18 +31,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(150)
 {
-	try
-	{
 		if (grade > 150)
 			throw GradeTooLowException();
 		else if (grade < 1)
 			throw GradeTooHighException();
 		this->Grade = grade;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 Bureaucrat::~Bureaucrat(){}
@@ -63,64 +56,34 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Bur
 
 void Bureaucrat::signForm(AForm& f)
 {
-	try
-	{
 		f.beSigned(*this);
 		if (f.getSigned() == false)
 			throw (GradeTooLowException());
 		std::cout << this->name << " signed " << f.getName() << std::endl;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << this->name << " couldn´t sign " << f.getName() << " because " <<e.what() << std::endl;
-	}
 }
 
 void Bureaucrat::executeForm(AForm const & form) const
 {
-	try
-	{
 		form.execute(*this);
 		if (this->getGrade() > form.getExecGrade() || this->getGrade() > form.getSignGrade())
 			throw GradeTooLowException();
-		std::cout << this->name << " executed " << form.getName() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << this->name << " couldn´t execute " << form.getName() << " because " << e.what() << std::endl;
-	}
-	
+		std::cout << this->name << " executed " << form.getName() << std::endl;	
 }
 
 void Bureaucrat::increment()
 {
-	try
-	{
 		this->Grade--;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
 		if (this->Grade < 1)
 			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
 }
 
 void Bureaucrat::decrement()
 {
-	try
-	{
 		this->Grade++;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
 		if (this->Grade < 1)
 			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }

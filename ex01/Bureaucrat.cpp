@@ -29,18 +29,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(150)
 {
-	try
-	{
-		if (grade > 150)
-			throw GradeTooLowException();
-		else if (grade < 1)
-			throw GradeTooHighException();
-		this->Grade = grade;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (grade > 150)
+		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
+	this->Grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(){}
@@ -61,49 +54,26 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Bur
 
 void Bureaucrat::signForm(Form& f)
 {
-	try
-	{
-		f.beSigned(*this);
-		if (f.getSigned() == false)
-			throw (GradeTooLowException());
-		std::cout << this->name << " signed " << f.getName() << std::endl;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << this->name << " couldn´t sign " << f.getName() << " because " <<e.what() << std::endl;
-	}
-	
+	f.beSigned(*this);
+	if (f.getSigned() == false)
+		throw (GradeTooLowException());
+	std::cout << this->name << " signed " << f.getName() << std::endl;	
 }
 
 void Bureaucrat::increment()
 {
-	try
-	{
-		this->Grade--;
-		if (this->Grade > 150)
-			throw GradeTooLowException();
-		if (this->Grade < 1)
-			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
+	this->Grade--;
+	if (this->Grade > 150)
+		throw GradeTooLowException();
+	if (this->Grade < 1)
+		throw GradeTooHighException();	
 }
 
 void Bureaucrat::decrement()
 {
-	try
-	{
-		this->Grade++;
-		if (this->Grade > 150)
-			throw GradeTooLowException();
-		if (this->Grade < 1)
-			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	this->Grade++;
+	if (this->Grade > 150)
+		throw GradeTooLowException();
+	if (this->Grade < 1)
+		throw GradeTooHighException();
 }

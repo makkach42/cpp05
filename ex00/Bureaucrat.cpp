@@ -28,18 +28,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(150)
 {
-	try
-	{
 		if (grade > 150)
 			throw GradeTooLowException();
 		else if (grade < 1)
 			throw GradeTooHighException();
 		this->Grade = grade;
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 Bureaucrat::~Bureaucrat(){}
@@ -60,33 +53,18 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Gra
 
 void Bureaucrat::increment()
 {
-	try
-	{
 		this->Grade--;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
 		if (this->Grade < 1)
-			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
+			throw GradeTooHighException();	
 }
 
 void Bureaucrat::decrement()
 {
-	try
-	{
 		this->Grade++;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
 		if (this->Grade < 1)
 			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
 }
