@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:02:48 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:01:21 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/03 20:35:02 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Form::Form():_name("default"), _signed(false), sign_grade(150), exec_grade(150){}
 
-Form::Form(const Form& copy):_name(copy.getName()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade())
+Form::Form(const Form& copy):_name(copy.getName()), _signed(copy.getSigned()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade())
 {
 	*this = copy;
 }

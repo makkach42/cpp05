@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 11:51:31 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/03 21:04:42 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,13 @@ int main()
 {
 	try
 	{
+		srand(time(NULL));
 		Bureaucrat b("qwerty", 5);
 		RobotomyRequestForm d("tree", 5, 5, "first_one");
-		b.signForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
-		b.executeForm(d);
+		// ShrubberyCreationForm j("chjra",)
+		ShrubberyCreationForm f("chjra", 20, 20, "azerty");
+		b.signForm(f);
+		b.executeForm(f);
 	}
 	catch(const std::exception& e)
 	{

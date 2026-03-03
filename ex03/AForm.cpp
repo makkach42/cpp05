@@ -15,7 +15,7 @@
 
 AForm::AForm():_name("default"), _signed(false), sign_grade(150), exec_grade(150), target("default"){}
 
-AForm::AForm(const AForm& copy):_name(copy.getName()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade()), target(copy.target)
+AForm::AForm(const AForm& copy):_name(copy.getName()), _signed(copy.getSigned()), sign_grade(copy.getSignGrade()), exec_grade(copy.getExecGrade()), target(copy.target)
 {
 	*this = copy;
 }

@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:20:34 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/03 21:06:44 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 }
 
 
-Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(150)
+Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(grade)
 {
 		if (grade > 150)
 			throw GradeTooLowException();
@@ -85,8 +85,6 @@ void Bureaucrat::executeForm(AForm const & form) const
 void Bureaucrat::increment()
 {
 		this->Grade--;
-		if (this->Grade > 150)
-			throw GradeTooLowException();
 		if (this->Grade < 1)
 			throw GradeTooHighException();	
 }
@@ -96,6 +94,4 @@ void Bureaucrat::decrement()
 		this->Grade++;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
-		if (this->Grade < 1)
-			throw GradeTooHighException();
 }

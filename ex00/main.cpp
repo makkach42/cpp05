@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/18 10:57:38 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/03 20:26:02 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main()
 {
 	try
 	{
-		Bureaucrat b("qwerty", 1);
+		Bureaucrat b("qwerty", 0);
 		std::cout << b << std::endl;
 	}
 	catch(const std::exception& e)

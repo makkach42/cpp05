@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:05 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:58:34 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/03 20:52:18 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 			throw AForm::NotSignedForm();
 		if ((this->getExecGrade() <= 45 && this->getSignGrade() <= 72) && executor.getGrade() <= 45 && executor.getGrade() <= this->getExecGrade())
 		{
-			static bool random = false;
-			if (!random)
-			{
-				srand(time(NULL));
-				random = true;
-			}
 			std::cout << "* drilling noises *" << std::endl;
             if (rand() % 2)
                 std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
