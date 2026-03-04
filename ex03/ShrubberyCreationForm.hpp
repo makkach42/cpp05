@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:51:52 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:44:59 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ShrubberyCreationForm : public AForm
 	};
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target);
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& copy);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);
 		~ShrubberyCreationForm();

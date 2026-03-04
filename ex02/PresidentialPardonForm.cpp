@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:28:57 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 11:09:50 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:11:43 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& cop
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy){AForm::operator=(copy);return *this;}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& name, int sign_grade, int exec_grade, std::string target):AForm::AForm(name, sign_grade, exec_grade, target)
-{
-		if (sign_grade > 25 || exec_grade > 5)
-			throw AForm::GradeTooLowException();
-}
+PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm::AForm("PresedentialPardonForm", 25, 5, target){}
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {

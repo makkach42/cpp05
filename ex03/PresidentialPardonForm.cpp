@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:28:57 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 11:01:02 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:12:03 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,15 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& cop
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy){AForm::operator=(copy);return *this;}
 
-AForm *PresidentialPardonForm::createPardon(){ return new PresidentialPardonForm("default", 25, 5, "targey");}
+AForm *PresidentialPardonForm::createPardon(){ return new PresidentialPardonForm("target");}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& name, int sign_grade, int exec_grade, std::string target):AForm::AForm(name, sign_grade, exec_grade, target)
-{
-		if (sign_grade > 25 || exec_grade > 5)
-			throw GradeTooLowException();
-}
+PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm::AForm("PresidentialPardonForm", 25, 5, target){}
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 		if (this->getSigned() == false)
 			throw AForm::NotSignedForm();
-		if (executor.getGrade() > 5 || executor.getGrade() > this->getSignGrade())
+		if (executor.getGrade() > this->getExecGrade())
 			throw AForm::GradeTooLowException();
 		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

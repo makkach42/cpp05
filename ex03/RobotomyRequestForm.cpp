@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:05 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 11:01:47 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:11:36 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 
 RobotomyRequestForm::RobotomyRequestForm():AForm("default", 72, 45, "target"){}
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy):AForm(copy){}
-RobotomyRequestForm::RobotomyRequestForm(const std::string& name, int grade, int exec_grade, std::string target):AForm(name, grade, exec_grade, target)
-{
-        if (grade > 72 || exec_grade > 45)
-            throw AForm::GradeTooLowException();
-}
+RobotomyRequestForm::RobotomyRequestForm(std::string target):AForm("RobotomyRequestForm", 72, 45, target){}
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
-AForm *RobotomyRequestForm::createRobotomy(){ return new RobotomyRequestForm("default", 72, 45, "target");}
+AForm *RobotomyRequestForm::createRobotomy(){ return new RobotomyRequestForm("target");}
 
 void RobotomyRequestForm::beSigned(Bureaucrat& employee)
 {
@@ -52,5 +48,5 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
                 std::cout << "the robotomy failed." << std::endl;
 		}
 		else
-			throw AForm::GradeTooHighException();
+			throw AForm::GradeTooLowException();
 }

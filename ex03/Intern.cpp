@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 11:08:33 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:17:03 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:50:29 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ AForm *Intern::makeForm(std::string one, std::string two)
 		{
 			AForm *f = arr2[i]();
 			f->setTarget(two);
+			std::cout << "Intern creates " << one << std::endl;
 			return (f);
 		}
 	}
 	throw (FormtypeNotFound());
-	// return NULL;
 }

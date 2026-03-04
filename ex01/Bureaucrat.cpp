@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/03/03 20:27:35 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:54:13 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat():name("default"), Grade(150){}
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy)
+Bureaucrat::Bureaucrat(const Bureaucrat& copy):name(copy.name)
 {
 	*this = copy;
 }

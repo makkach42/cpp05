@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:10 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:59:39 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:11:49 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm():AForm("default", 145, 137, "target"){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int sign_grade, int execute_grade, std::string target):AForm(name, sign_grade, execute_grade, target)
-{
-		if (sign_grade > 145 || execute_grade > 137)
-			throw AForm::GradeTooLowException();
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target):AForm("ShrubberyCreationForm", 145, 137, target){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){*this = copy;}
 

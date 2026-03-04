@@ -65,22 +65,6 @@ const char *AForm::NotSignedForm::what() const throw(){ return "AForm::NotSigned
 
 void AForm::setSigned(bool expression){this->_signed = expression;}
 
-// void AForm::execute(Bureaucrat const & executor) const
-// {
-// 	try
-// 	{
-// 		if (executor.getGrade() > this->getSignGrade())
-// 			throw GradeTooLowException();
-// 		if (_signed == false)
-// 			throw NotSignedForm();
-// 		std::cout << this->getName() << " has been executed" << std::endl;
-// 	}
-// 	catch(std::exception& e)
-// 	{
-// 		std::cerr << e.what() << std::endl;
-// 	}
-// }
-
 std::string AForm::getTarget() const {return this->target;}
 
 void AForm::setTarget(std::string target) {this->target = target;}

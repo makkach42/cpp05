@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/20 12:47:45 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:49:39 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main()
 	try
 	{
 		Bureaucrat b("qwerty", 5);
-		ShrubberyCreationForm d("tree", 5, 5, "first_one");
+		ShrubberyCreationForm d("first_one");
+		b.signForm(d);
 		b.executeForm(d);
 		Intern i;
 		AForm *j = i.makeForm("robotomy request", "wwwww");

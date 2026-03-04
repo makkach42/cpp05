@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:13 by makkach           #+#    #+#             */
-/*   Updated: 2026/03/03 21:04:42 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:59:06 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ int main()
 	{
 		srand(time(NULL));
 		Bureaucrat b("qwerty", 5);
-		RobotomyRequestForm d("tree", 5, 5, "first_one");
-		// ShrubberyCreationForm j("chjra",)
-		ShrubberyCreationForm f("chjra", 20, 20, "azerty");
+		RobotomyRequestForm d("robot");
+		ShrubberyCreationForm f("chjra");
 		b.signForm(f);
 		b.executeForm(f);
 	}

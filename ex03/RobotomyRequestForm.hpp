@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:29:08 by makkach           #+#    #+#             */
-/*   Updated: 2026/01/23 10:51:56 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:43:27 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class RobotomyRequestForm : public AForm
     public:
         RobotomyRequestForm();
         RobotomyRequestForm(const RobotomyRequestForm& copy);
-        RobotomyRequestForm(const std::string& name, int grade, int exec_grade, std::string target);
+        RobotomyRequestForm(std::string target);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
         void execute(Bureaucrat const & executor) const;
         void beSigned(Bureaucrat& employee);

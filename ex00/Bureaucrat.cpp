@@ -6,7 +6,7 @@
 /*   By: makkach <makkach@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:53:11 by makkach           #+#    #+#             */
-/*   Updated: 2026/03/03 20:24:33 by makkach          ###   ########.fr       */
+/*   Updated: 2026/03/04 14:11:13 by makkach          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat():name("default"), Grade(150){}
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy)
+Bureaucrat::Bureaucrat(const Bureaucrat& copy):name(copy.name)
 {
 	*this = copy;
 }
@@ -54,8 +54,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Gra
 void Bureaucrat::increment()
 {
 		this->Grade--;
-		if (this->Grade > 150)
-			throw GradeTooLowException();
 		if (this->Grade < 1)
 			throw GradeTooHighException();	
 }
@@ -65,6 +63,4 @@ void Bureaucrat::decrement()
 		this->Grade++;
 		if (this->Grade > 150)
 			throw GradeTooLowException();
-		if (this->Grade < 1)
-			throw GradeTooHighException();
 }
