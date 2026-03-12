@@ -39,7 +39,7 @@ AForm::AForm(const std::string& name, int sign_grade, int exec_grade, std::strin
 
 AForm::~AForm(){}
 
-std::ostream &operator<<(std::ostream &os, AForm &AForm)
+std::ostream &operator<<(std::ostream &os, const AForm &AForm)
 {
 	os << AForm.getName() << ", AForm sign grade " << AForm.getSignGrade() << ", AForm sign status " << AForm.getSigned() << ", AForm execution grade " << AForm.getExecGrade();
 	return (os);

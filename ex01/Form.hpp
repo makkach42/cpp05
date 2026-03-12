@@ -46,6 +46,6 @@ class Form
 		void beSigned(Bureaucrat& employee);
 };
 
-std::ostream &operator<<(std::ostream &stream, Form &AForm);
+std::ostream &operator<<(std::ostream &stream, const Form &AForm);
 
 #endif

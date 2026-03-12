@@ -37,7 +37,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(grad
 
 Bureaucrat::~Bureaucrat(){}
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat& b)
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
 	os << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return (os);
