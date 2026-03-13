@@ -50,7 +50,7 @@ bool AForm::getSigned()const{return this->_signed;}
 int AForm::getSignGrade()const{return this->sign_grade;}
 int AForm::getExecGrade()const{return this->exec_grade;}
 
-void AForm::beSigned(Bureaucrat& employee)
+void AForm::beSigned(const Bureaucrat& employee)
 {
 		if (employee.getGrade() > this->sign_grade)
 			throw GradeTooLowException();

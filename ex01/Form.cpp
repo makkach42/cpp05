@@ -48,7 +48,7 @@ bool Form::getSigned()const{return this->_signed;}
 int Form::getSignGrade()const{return this->sign_grade;}
 int Form::getExecGrade()const{return this->exec_grade;}
 
-void Form::beSigned(Bureaucrat& employee)
+void Form::beSigned(const Bureaucrat& employee)
 {
 	if (employee.getGrade() > this->sign_grade)
 		throw GradeTooLowException();

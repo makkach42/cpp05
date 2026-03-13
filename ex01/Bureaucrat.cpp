@@ -52,7 +52,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {return ("Bu
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {return ("Bureaucrat::GradeTooLowException");}
 
-void Bureaucrat::signForm(Form& f)
+void Bureaucrat::signForm(Form& f) const
 {
     try
     {

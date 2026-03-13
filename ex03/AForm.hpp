@@ -50,7 +50,7 @@ class AForm
 		int getSignGrade() const;
 		int getExecGrade() const;
 		std::string getTarget() const;
-		virtual void beSigned(Bureaucrat& employee);
+		void beSigned(const Bureaucrat& employee);
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		void setSigned(bool expression);
 		void setTarget(std::string target);
