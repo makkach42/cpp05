@@ -28,11 +28,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):name(name), Grade(grade)
 {
-		if (grade > 150)
-			throw GradeTooLowException();
-		else if (grade < 1)
-			throw GradeTooHighException();
-		this->Grade = grade;
+	if (grade > 150)
+		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
+	this->Grade = grade;
 }
 
 Bureaucrat::~Bureaucrat(){}
