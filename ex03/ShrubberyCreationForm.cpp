@@ -18,7 +18,7 @@ ShrubberyCreationForm::ShrubberyCreationForm():AForm("default", 145, 137, "targe
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target):AForm("ShrubberyCreationForm", 145, 137, target){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy){*this = copy;}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy):AForm(copy){*this = copy;}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy){AForm::operator=(copy);return *this;}
 
