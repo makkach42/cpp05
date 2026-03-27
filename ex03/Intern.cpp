@@ -24,8 +24,7 @@ const char *Intern::FormtypeNotFound::what() const throw(){return "Intern::Formt
 AForm *Intern::makeForm(std::string one, std::string two)
 {
 	std::string arr[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-	typedef AForm *(*clone)();
-	clone arr2[3];
+	AForm *(*arr2[3])();
 	arr2[0] = &RobotomyRequestForm::createRobotomy;
 	arr2[1] = &PresidentialPardonForm::createPardon;
 	arr2[2] = &ShrubberyCreationForm::createShrubbery;

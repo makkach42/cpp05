@@ -24,8 +24,13 @@ int main()
 		Bureaucrat b("qwerty", 5);
 		RobotomyRequestForm d("robot");
 		ShrubberyCreationForm f("chjra");
+		PresidentialPardonForm c("criminal");
 		b.signForm(f);
 		b.executeForm(f);
+		b.signForm(d);
+		b.executeForm(d);
+		b.signForm(c);
+		b.executeForm(c);
 	}
 	catch(const std::exception& e)
 	{

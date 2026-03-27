@@ -21,13 +21,20 @@ int main()
 {
 	try
 	{
-		Bureaucrat b("qwerty", 5);
-		ShrubberyCreationForm d("first_one");
-		b.signForm(d);
-		b.executeForm(d);
+		Bureaucrat b("buro", 1);
 		Intern i;
 		AForm *j = i.makeForm("robotomy request", "wwwww");
+		AForm *k = i.makeForm("presidential pardon", "wwwww");
+		AForm *l = i.makeForm("shrubbery creation", "wwwww");
+		b.signForm(*j);
+		b.signForm(*k);
+		b.signForm(*l);
+		b.executeForm(*j);
+		b.executeForm(*k);
+		b.executeForm(*l);
 		delete j;
+		delete k;
+		delete l;
 	}
 	catch(std::exception& e)
 	{
