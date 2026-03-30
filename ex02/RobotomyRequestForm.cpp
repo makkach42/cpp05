@@ -19,7 +19,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target):AForm("RobotomyRequ
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
-void RobotomyRequestForm::beSigned(Bureaucrat& employee)
+void RobotomyRequestForm::beSigned(const Bureaucrat& employee)
 {
 		if (this->getSignGrade() <= 72 && this->getSignGrade() >= employee.getGrade())
 			this->setSigned(true);
@@ -27,7 +27,7 @@ void RobotomyRequestForm::beSigned(Bureaucrat& employee)
 			throw AForm::GradeTooLowException();
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 		if (this->getSigned() == false)
 			throw AForm::NotSignedForm();

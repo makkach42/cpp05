@@ -17,26 +17,6 @@ int main()
 {
 	try
 	{
-		// Bureaucrat d("qwerty", 1);
-		// std::cout << "d:" << d << std::endl;
-		// d.decrement();
-		// std::cout << "d:" << d << std::endl;
-		// d.increment();
-		// std::cout << "d:" << d << std::endl;
-		// std::cout << std::endl;
-
-		// const Bureaucrat b(d);
-		// std::cout << "b:" << b << std::endl;
-		// Bureaucrat z(b);
-		// std::cout << "z:" << z << std::endl;
-		// std::cout << std::endl;
-
-		// Bureaucrat n("azerty", 2);
-		// std::cout << "n:" << n << std::endl;
-		// n = b;
-		// std::cout << "n:" << n << std::endl << std::endl;
-
-
 		Form f("treaty 1", 1, 1);
 		std::cout << "name:" << f.getName() << std::endl;
 		std::cout << "signed:" << f.getSigned() << std::endl;

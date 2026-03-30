@@ -69,8 +69,6 @@ void Bureaucrat::signForm(Form& f) const
 void Bureaucrat::increment()
 {
 	this->Grade--;
-	if (this->Grade > 150)
-		throw GradeTooLowException();
 	if (this->Grade < 1)
 		throw GradeTooHighException();	
 }
@@ -80,6 +78,4 @@ void Bureaucrat::decrement()
 	this->Grade++;
 	if (this->Grade > 150)
 		throw GradeTooLowException();
-	if (this->Grade < 1)
-		throw GradeTooHighException();
 }

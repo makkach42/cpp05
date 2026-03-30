@@ -26,7 +26,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 const char *ShrubberyCreationForm::BadFd::what() const throw(){ return "AForm::BadFd"; }
 
-void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
+void ShrubberyCreationForm::beSigned(const Bureaucrat& employee)
 {
 	if (this->getSignGrade() <= 145 && this->getSignGrade() >= employee.getGrade())
 		this->setSigned(true);
@@ -34,7 +34,7 @@ void ShrubberyCreationForm::beSigned(Bureaucrat& employee)
 		throw AForm::GradeTooLowException();
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
 	if (this->getSigned() == false)
 		throw AForm::NotSignedForm();
