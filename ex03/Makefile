@@ -19,7 +19,7 @@ $(NAME):	$(OBJ)
 -include $(DEPS)
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(DEPS)
 
 fclean:	clean
 	rm -rf $(NAME)
