@@ -17,7 +17,12 @@ PresidentialPardonForm::PresidentialPardonForm():AForm("default", 25, 5, "target
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy):AForm(copy){}
 
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy){AForm::operator=(copy);return *this;}
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
+{
+	this->setTarget(copy.getTarget());
+	AForm::operator=(copy);
+	return *this;
+}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm::AForm("PresedentialPardonForm", 25, 5, target){}
 

@@ -20,7 +20,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target):AForm("Shrubber
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy):AForm(copy){*this = copy;}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy){AForm::operator=(copy);return *this;}
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
+{
+	this->setTarget(copy.getTarget());
+	AForm::operator=(copy);
+	return *this;
+}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 

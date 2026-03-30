@@ -16,7 +16,12 @@
 RobotomyRequestForm::RobotomyRequestForm():AForm("default", 72, 45, "target"){}
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy):AForm(copy){}
 RobotomyRequestForm::RobotomyRequestForm(std::string target):AForm("RobotomyRequestForm", 72, 45, target){}
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy){AForm::operator=(copy);return *this;}
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy)
+{
+	this->setTarget(copy.getTarget());
+	AForm::operator=(copy);
+	return *this;
+}
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
 AForm *RobotomyRequestForm::createRobotomy(){ return new RobotomyRequestForm("target");}
