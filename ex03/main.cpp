@@ -36,7 +36,7 @@ int main()
 		delete k;
 		delete l;
 	}
-	catch(std::exception& e)
+	catch(const std::exception& e)
 	{
 		std::cout << e.what() << '\n';
 	}
