@@ -67,7 +67,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 		of.close();
 	}
 	else
-		throw AForm::GradeTooHighException();
+		throw AForm::GradeTooLowException();
 }
 
 AForm *ShrubberyCreationForm::createShrubbery(){ return new ShrubberyCreationForm("target");}
