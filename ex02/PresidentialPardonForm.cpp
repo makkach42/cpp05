@@ -24,7 +24,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm::AForm("PresedentialPardonForm", 25, 5, target){}
+PresidentialPardonForm::PresidentialPardonForm(std::string target):AForm::AForm("PresidentialPardonForm", 25, 5, target){}
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const
 {
